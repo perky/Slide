@@ -1,0 +1,81 @@
+/* @override http://localhost:3000/stylesheets/layout.css */
+
+body {
+	background-color: #cacaca;
+}
+
+/* @group layout */
+
+#title {
+	max-width: 760px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 30px;
+}
+
+#logo {
+	font: italic 2.5em Georgia, "Times New Roman", Times, serif;
+	color: #282828;
+	display: inline;
+}
+
+#tagline {
+	display: inline;
+	text-decoration: overline;
+	font: normal small-caps normal 0.8em "Lucida Grande", Lucida, Verdana, sans-serif;
+}
+
+#main {
+	background-color: white;
+	max-width: 760px;
+	height: 500px;
+	margin-right: auto;
+	margin-left: auto;
+	border: 10px solid #848484;
+}
+
+#thread_list {
+	background-color: #b6ffe6;
+	float: left;
+	width: 30%;
+	min-width: 30%;
+	height: 100%;
+	overflow: scroll;
+	overflow-x: hidden;
+}
+
+#thread_view {
+	background-color: #ff8892;
+	height: 100%;
+	width: 70%;
+	float: right;
+}
+
+#thread_posts {
+	background-color: #f00;
+	width: 100%;
+	height: 400px;
+	overflow: scroll;
+	overflow-x: hidden;
+}
+
+#thread_entry {
+	width: 100%;
+	background-color: #bfff83;
+	height: 100px;
+}
+
+
+
+/* @end */
+
+/* @group thread list */
+
+#thread_list ul {
+	background-color: #009fff;
+}
+
+
+
+/* @end */
+

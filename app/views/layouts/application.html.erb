@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+    <%= stylesheet_link_tag "application" %>
+		<%= stylesheet_link_tag "slide.css" %>
+		
+    <%= javascript_include_tag :defaults %>
+		<%= javascript_include_tag "http://js.pusherapp.com/1.6/pusher.min.js" %>
+		
+    <%= csrf_meta_tag %>
+    <%= yield(:head) %>
+  </head>
+  <body>
+	
+		<div id="title">
+			<h1 id="logo"> Slide </h1>
+			<h2 id="tagline"> A forum on rails </h2>
+		</div>
+		<div id="main">
+			<div id="thread_list"> <%= yield(:thread_list) %> </div>
+			<div id="thread_view">
+				<div id="thread_posts"> <%= yield(:thread_posts) %> </div>
+				<div id="thread_entry"> <%= yield(:thread_entry) %> </div>
+			</div>
+		</div>
+		
+		<%= yield(:flash) %>
+		
+  </body>
+</html>

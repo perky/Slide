@@ -1,0 +1,31 @@
+<% title "Forum Thread" %>
+
+<p>
+  <strong>Title:</strong>
+  <%= @forum_thread.title %>
+</p>
+<p>
+  <strong>Description:</strong>
+  <%= @forum_thread.description %>
+</p>
+<p>
+  <strong>User:</strong>
+  <%= @forum_thread.user_id %>
+</p>
+<p>
+  <strong>Catagory:</strong>
+  <%= @forum_thread.catagory_id %>
+</p>
+
+<% if !@forum_thread.forum_posts.blank? %>
+  <% for item in @forum_thread.forum_posts %>
+    <%=h item.content %>
+  <% end %>
+<% end %>
+
+
+<p>
+  <%= link_to "Edit", edit_forum_thread_path(@forum_thread) %> |
+  <%= link_to "Destroy", @forum_thread, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", forum_threads_path %>
+</p>

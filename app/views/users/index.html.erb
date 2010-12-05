@@ -1,0 +1,7 @@
+<% if !@users.blank? %>
+  <% for item in @users %>
+    <%=h item.username+', '+item.email %>
+  <% end %>
+<% else %>
+  
+<% end %>

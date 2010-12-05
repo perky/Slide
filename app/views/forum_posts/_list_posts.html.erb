@@ -1,0 +1,13 @@
+<div id="posts">
+	<% if !current_thread.nil? then %>
+		<%= current_thread.title %>
+		<ul>
+			<% for post in current_thread.forum_posts do %>
+				<li>
+					<%= post.content %><br/>
+					<font size="1px">said <%= post.user.username %> <%= get_post_time(post) %> ago.</font>
+				</li>
+			<% end %>
+		</ul>
+	<% end %>
+</div>

@@ -1,0 +1,23 @@
+<% title "Forum Threads" %>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>User</th>
+    <th>Catagory</th>
+  </tr>
+  <% for forum_thread in @forum_threads %>
+    <tr>
+      <td><%= forum_thread.title %></td>
+      <td><%= forum_thread.description %></td>
+      <td><%= forum_thread.user_id %></td>
+      <td><%= forum_thread.catagory_id %></td>
+      <td><%= link_to "Show", forum_thread %></td>
+      <td><%= link_to "Edit", edit_forum_thread_path(forum_thread) %></td>
+      <td><%= link_to "Destroy", forum_thread, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Forum Thread", new_forum_thread_path %></p>

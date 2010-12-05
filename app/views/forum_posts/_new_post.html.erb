@@ -1,0 +1,10 @@
+<div id="entry">
+	<%= form_for @forum_post, :remote => true do |f| %>
+	  <%= f.error_messages %>
+	  <p>
+	    <%= f.label :content %><br />
+	    <%= f.text_area :content %>
+	  </p>
+	  <p><%= f.submit %></p>
+	<% end %>
+</div>
