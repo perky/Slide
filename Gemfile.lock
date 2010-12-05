@@ -29,6 +29,7 @@ GEM
       activesupport (= 3.0.3)
     activesupport (3.0.3)
     arel (2.0.4)
+    bb-ruby (0.9.5)
     bcrypt-ruby (2.1.2)
     builder (2.1.2)
     crack (0.1.8)
@@ -83,6 +84,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bb-ruby
   bcrypt-ruby
   mocha
   nifty-generators

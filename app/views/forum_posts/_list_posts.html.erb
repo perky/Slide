@@ -1,13 +1,12 @@
-<div id="posts">
+<% content_for :thread_posts do %>
 	<% if !current_thread.nil? then %>
-		<%= current_thread.title %>
+	
 		<ul>
 			<% for post in current_thread.forum_posts do %>
 				<li>
-					<%= post.content %><br/>
-					<font size="1px">said <%= post.user.username %> <%= get_post_time(post) %> ago.</font>
+					<%= render 'forum_posts/post', :post => post %>
 				</li>
 			<% end %>
 		</ul>
 	<% end %>
-</div>
+<% end %>

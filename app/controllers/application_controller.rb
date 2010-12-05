@@ -1,4 +1,5 @@
 require 'pusher'
+require 'bb-ruby'
 
 Pusher.app_id = '3004'
 Pusher.key = '8a498c9f2919fe85d8e7'

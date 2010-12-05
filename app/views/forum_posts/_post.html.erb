@@ -1,0 +1,7 @@
+<div class="avatar"><%= image_tag "default_avatar.png" %></div>
+					<div class="post_body">
+						<p class="post_content"><%= post.content.bbcode_to_html %></p>
+						
+					</div>
+					<p class="post_time">said <%= post.user.username %> <%= get_post_time(post) %> ago.</p>
+					<div class="clear"></div>

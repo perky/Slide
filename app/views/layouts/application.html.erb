@@ -13,10 +13,18 @@
   </head>
   <body>
 	
-		<div id="title">
-			<h1 id="logo"> Slide </h1>
-			<h2 id="tagline"> A forum on rails </h2>
+		<div id="top_bar">
+			<div id="title">
+				<h1 id="logo"> Slide </h1>
+				<h2 id="tagline"> An elegant forum on rails </h2>
+			</div>
+			<div id="nav">
+				<a href="#">New thread</a>
+				<a href="#">Search all threads</a>
+				<a href="#">Search current thread</a>
+			</div>
 		</div>
+		
 		<div id="main">
 			<div id="thread_list"> <%= yield(:thread_list) %> </div>
 			<div id="thread_view">
