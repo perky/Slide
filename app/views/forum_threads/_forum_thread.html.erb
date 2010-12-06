@@ -1,9 +1,12 @@
+hello
 <% content_for :thread_posts do %>
 	<% if !current_thread.nil? then %>
 	
 		<ul>
 			<% for post in current_thread.forum_posts do %>
+				<li>
 					<%= render 'forum_posts/post', :post => post %>
+				</li>
 			<% end %>
 		</ul>
 	<% end %>

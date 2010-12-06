@@ -9,4 +9,8 @@ class ApplicationController < ActionController::Base
   include ControllerAuthentication
   include ControllerForum
   protect_from_forgery
+  
+  def goto_thread_with_anchor( post )
+    redirect_to "#{url_for(forum_thread_path(current_thread))}#post_#{post.id}"
+  end
 end

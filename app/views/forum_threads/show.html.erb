@@ -1,31 +1,22 @@
-<% title "Forum Thread" %>
-
-<p>
-  <strong>Title:</strong>
-  <%= @forum_thread.title %>
-</p>
-<p>
-  <strong>Description:</strong>
-  <%= @forum_thread.description %>
-</p>
-<p>
-  <strong>User:</strong>
-  <%= @forum_thread.user_id %>
-</p>
-<p>
-  <strong>Catagory:</strong>
-  <%= @forum_thread.catagory_id %>
-</p>
-
-<% if !@forum_thread.forum_posts.blank? %>
-  <% for item in @forum_thread.forum_posts %>
-    <%=h item.content %>
-  <% end %>
-<% end %>
-
-
-<p>
-  <%= link_to "Edit", edit_forum_thread_path(@forum_thread) %> |
-  <%= link_to "Destroy", @forum_thread, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", forum_threads_path %>
-</p>
+<%= javascript "pusher" %>
+<script>
+	var pusher = new Pusher('8a498c9f2919fe85d8e7');
+	var current_thread = pusher.subscribe("<%=current_thread.id%>-posts");
+	var all_threads = pusher.subscribe("all_threads");
+	
+	current_thread.bind('post-create', function(thing) {
+		$.get( '/ajax/posts/' + thing, null, null, "script" );
+	});
+	
+	all_threads.bind('thread-newpost', function(thread) {
+		tname = "#thread_link_"+thread.id;
+		$(tname+" .count").text( thread.count+" posts" );
+		$(tname+" li").removeClass( "viewed new" );
+		$(tname+" li").addClass( "new" );
+		$(tname).clone().prependTo("#list_of_threads");
+		$(tname).remove();
+	});
+</script>
+<%= render :partial => 'forum_threads/list_threads' %>
+<%= render :partial => 'forum_posts/list_posts' %>
+<%= render :partial => 'forum_posts/new_post' %>

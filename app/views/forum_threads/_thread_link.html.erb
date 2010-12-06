@@ -1,0 +1,5 @@
+				<h1><%= fthread.title %></h1>
+				<h2>last post by <%= get_last_post_user(fthread) %><br/>
+				created by <%= fthread.user.username %></h2>
+				<h3 class="count"><%= fthread.forum_posts.count %> posts</h3>
+				<div class="clear"></div>

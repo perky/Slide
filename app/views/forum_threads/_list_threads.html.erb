@@ -1,14 +1,15 @@
 <% content_for :thread_list do %>
-	<ul>
+	<ul id="list_of_threads">
 		<% if !@forum_threads.blank? then %>
 		<% for thread in @forum_threads do %>
-			<li>
-				<h1><%= link_to thread.title, select_thread_path(thread.id) %></h1>
-				<h2>last post by <%= get_last_post_user(thread) %><br/>
-				created by <%= thread.user.username %></h2>
-				<h3><%= thread.forum_posts.count %> posts</h3>
-				<div class="clear"></div>
-			</li>
+			
+				<%= link_to forum_thread_path(thread.id), :id => "thread_link_#{thread.id}" do %>
+				<% isnew = cookies["thread_"+thread.id.to_s] ? "viewed" : "" %>
+				<li class="thread_link <%= isnew %>">
+					<%= render 'thread_link', :fthread => thread %>
+				</li>
+				<% end %>
+			
 		<% end %>
 		<% end %>
 	</ul>

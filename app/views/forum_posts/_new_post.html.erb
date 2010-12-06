@@ -1,10 +1,21 @@
-<div id="entry">
-	<%= form_for @forum_post, :remote => true do |f| %>
+<% if signed_in? then %>
+<% content_for :thread_entry do %>
+	<%= form_for ForumPost.new, :remote => true do |f| %>
 	  <%= f.error_messages %>
-	  <p>
-	    <%= f.label :content %><br />
+	  
+		
+		<div>
 	    <%= f.text_area :content %>
-	  </p>
-	  <p><%= f.submit %></p>
+	  </div>
+	
+		<div id="entry_buttons">
+			<%= f.submit :submit %>
+		</div>
+	  
 	<% end %>
-</div>
+<% end %>
+<% else %>
+	<% content_for :thread_entry do %>
+	 You need to sign in.
+	<% end %>
+<% end %>

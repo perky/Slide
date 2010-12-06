@@ -19,14 +19,24 @@ class ForumPostsController < ApplicationController
     if @forum_post.save
       @forum_post.touch
       flash[:notice] = "Successfully created forum post."
-      Pusher["#{current_thread.id}-posts"].trigger('post-create', @forum_post.attributes)
+      push @forum_post
       respond_to do |format|
-        format.html { redirect_to forum_threads_path }
-        format.js { render 'forum_threads/new_post.js' }
+        format.html { goto_thread_with_anchor @forum_post }
+        format.js
       end
     else
       render :action => 'new'
     end
+  end
+  
+  def push( post )
+    Pusher["#{current_thread.id}-posts"].trigger('post-create', post.id)
+    Pusher["all_threads"].trigger('thread-newpost', { "id" => post.forum_thread.id, "count" => post.forum_thread.forum_posts.count } )
+  end
+  
+  def ajax
+    @forum_post = ForumPost.find( params[:id] )
+    @test = "hello"
   end
   
   def edit

@@ -1,11 +1,16 @@
 Slide::Application.routes.draw do
   resources :forum_posts
-  resources :forum_threads
+  
   resources :sessions
   resources :users
   
   root :to => "forum_threads#index"
-
+  
+  match '/home' => 'ForumThreads#index', :as => :forum_threads
+  match '/show' => 'ForumThreads#show'
+  match '/thread/:id' => 'ForumThreads#show', :as => :forum_thread
+  match '/ajax/posts/:id' => 'ForumPosts#ajax'
+  
   match 'user/edit' => 'users#edit', :as => :edit_user
   match 'signup' => 'users#new', :as => :signup
   match 'logout' => 'sessions#destroy', :as => :logout

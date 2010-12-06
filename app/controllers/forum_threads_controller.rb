@@ -1,18 +1,20 @@
 class ForumThreadsController < ApplicationController
+  
   def index
     @forum_threads = ForumThread.order("updated_at DESC")
-    @forum_post    = ForumPost.new
-    respond_to do |format|
-      format.html
-      format.js
-    end
+    render :layout => 'forum'
   end
   
   def nothing
   end
   
   def show
-    @forum_thread = ForumThread.find(params[:id])
+    session[:current_thread_id] = params[:id]
+    @current_thread = current_thread
+    @forum_threads = ForumThread.order("updated_at DESC")
+    cookies[ "thread_"+@current_thread.id.to_s ] = true
+    render :layout => 'forum'
+    #redirect_to forum_thread_path( params[:id] )
   end
   
   def new

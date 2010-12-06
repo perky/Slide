@@ -1,25 +1,3 @@
-<script>
-	var pusher = new Pusher('8a498c9f2919fe85d8e7');
-	var myChannel = pusher.subscribe("<%=current_thread.id%>-posts");
-	
-	myChannel.bind('post-create', function(thing) {
-	  alert('A thing was created: ' + thing.content);
-	});
-</script>
-
-<% if !@found_posts.blank? %>
-  <% for item in @found_posts %>
-    <%= item.content %>
-  <% end %>
-<% end %>
-
-
-<div id="search">
-	<%= form_tag '/search_all_posts' do %>
-		<%= search_field_tag 'search' %>
-	<% end %>
-</div>
-
 <%= render :partial => 'forum_threads/list_threads' %>
 <%= render :partial => 'forum_posts/list_posts' %>
 <%= render :partial => 'forum_posts/new_post' %>
