@@ -1,4 +1,6 @@
 class ForumPostsController < ApplicationController
+  before_filter :login_required, :except => [:index, :show, :ajax, :search]
+  
   def index
     @forum_posts = ForumPost.all
   end
@@ -47,7 +49,7 @@ class ForumPostsController < ApplicationController
     @forum_post = ForumPost.find(params[:id])
     if @forum_post.update_attributes(params[:forum_post])
       flash[:notice] = "Successfully updated forum post."
-      redirect_to @forum_post
+      goto_thread_with_anchor @forum_post
     else
       render :action => 'edit'
     end
@@ -57,7 +59,7 @@ class ForumPostsController < ApplicationController
     @forum_post = ForumPost.find(params[:id])
     @forum_post.destroy
     flash[:notice] = "Successfully destroyed forum post."
-    redirect_to forum_posts_url
+    redirect_to current_thread
   end
   
   def search
@@ -67,4 +69,6 @@ class ForumPostsController < ApplicationController
     @forum_post    = ForumPost.new
     render 'forum_threads/index'
   end
+  
+  private
 end

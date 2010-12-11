@@ -4,6 +4,12 @@
 <div class="post_body">
 	<p class="post_content"><%= raw(post.content.bbcode_to_html) %></p>
 </div>
-<p class="post_time">said <%= post.user.username %> <%= get_post_time(post) %> ago.</p>
+<p class="post_time">
+	said <%= post.user.username %> <%= get_post_time(post) %> ago.
+	<% if logged_in? and post.user == current_user then %>
+		<%= link_to "Edit", edit_forum_post_path(post) %>
+		<%= link_to "Delete", post, :method => :delete %>
+	<% end %>
+</p>
 <div class="clear"></div>
 </li>

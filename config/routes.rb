@@ -1,14 +1,16 @@
 Slide::Application.routes.draw do
   resources :forum_posts
-  
   resources :sessions
   resources :users
   
-  root :to => "forum_threads#index"
+  root :to => "pages#home"
   
-  match '/home' => 'ForumThreads#index', :as => :forum_threads
+  match '/home' => 'pages#home', :as => :home
+  
+  match '/threads' => 'ForumThreads#index', :as => :forum_threads
   match '/show' => 'ForumThreads#show'
   match '/thread/:id' => 'ForumThreads#show', :as => :forum_thread
+  match '/search_all_posts' => 'ForumPosts#search'
   match '/ajax/posts/:id' => 'ForumPosts#ajax'
   
   match 'user/edit' => 'users#edit', :as => :edit_user
@@ -16,7 +18,7 @@ Slide::Application.routes.draw do
   match 'logout' => 'sessions#destroy', :as => :logout
   match 'login' => 'sessions#new', :as => :login
   match 'thread/select/:id' => 'forum_threads#select_thread', :as => :select_thread
-  match '/search_all_posts' => 'forum_posts#search'
+  
   
 
   # The priority is based upon order of creation:

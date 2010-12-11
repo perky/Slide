@@ -1,5 +1,9 @@
+<% content_for :thread_posts do %>
 <% title "Sign up" %>
 
 <p>Already have an account? <%= link_to "Log in", login_path %>.</p>
 
 <%= render 'form' %>
+<% end %>
+
+<%= render 'forum_threads/list_threads' %>

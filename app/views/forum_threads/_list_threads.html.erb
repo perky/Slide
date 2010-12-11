@@ -6,7 +6,7 @@
 				<%= link_to forum_thread_path(thread.id), :id => "thread_link_#{thread.id}" do %>
 				<% isnew = cookies["thread_"+thread.id.to_s] ? "viewed" : "" %>
 				<li class="thread_link <%= isnew %>">
-					<%= render 'thread_link', :fthread => thread %>
+					<%= render 'forum_threads/thread_link', :fthread => thread %>
 				</li>
 				<% end %>
 			

@@ -1,4 +1,4 @@
-<% if signed_in? then %>
+<% if logged_in? then %>
 <% content_for :thread_entry do %>
 	<%= form_for ForumPost.new, :remote => true do |f| %>
 	  <%= f.error_messages %>

@@ -34,6 +34,15 @@ body {
 	display: inline;
 }
 
+#logo a {
+	text-decoration: none;
+	color: #282828;
+}
+
+#logo a:hover {
+	color: #fffeff;
+}
+
 #tagline {
 	display: inline;
 	text-decoration: overline;
@@ -69,7 +78,7 @@ body {
 #main {
 	background-color: white;
 	max-width: 960px;
-	height: 500px;
+	height: 600px;
 	margin-right: auto;
 	margin-left: auto;
 	border: 10px solid #848484;
@@ -94,7 +103,7 @@ body {
 
 #thread_posts {
 	width: 100%;
-	height: 400px;
+	height: 500px;
 	overflow: scroll;
 	overflow-x: hidden;
 	border-left-style: solid;
@@ -103,7 +112,6 @@ body {
 
 #thread_entry {
 	width: 100%;
-	background-color: #bfff83;
 	border-left-style: solid;
 	border-top-style: solid;
 	height: 97px;
@@ -236,6 +244,22 @@ body {
 #entry_buttons {
 	float: left;
 	padding: 37px 30px 30px 38px;
+}
+
+
+
+/* @end */
+
+/* @group Home */
+
+h1.home {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	text-align: center;
+	text-decoration: overline;
+	font-style: normal;
+	font-weight: normal;
+	margin-top: 100px;
+	color: #3a3a3a;
 }
 
 
