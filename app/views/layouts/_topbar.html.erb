@@ -1,0 +1,16 @@
+<div id="top_bar">
+	<div id="title">
+		<h1 id="logo"> <%= link_to "Slide", root_path %> </h1>
+		<h2 id="tagline"> An elegant forum on rails </h2>
+	</div>
+	<div id="nav">
+		<% if logged_in? then %>
+			<a href="#">New thread</a>
+			<%= link_to 'Logout', logout_path %>
+		<% else %>
+			<%= link_to "Login", login_path %>
+		<% end %>
+		<a href="#">Search all threads</a>
+		<a href="#">Search current thread</a>
+	</div>
+</div>

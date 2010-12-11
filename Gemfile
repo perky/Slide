@@ -9,8 +9,13 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'pusher'
 gem 'bb-ruby'
 
-group :development do
+group :development, :test, :cucumber do
   gem 'nifty-generators'
+  gem 'cucumber'
+  gem 'cucumber-rails'
+  gem 'webrat'
+  gem 'rspec-rails'
+  gem "mocha"
 end
 
 # Use unicorn as the web server
@@ -35,5 +40,4 @@ end
 # group :development, :test do
 #   gem 'webrat'
 # end
-gem "bcrypt-ruby", :require => "bcrypt"
-gem "mocha", :group => :test
+gem "bcrypt-ruby"
