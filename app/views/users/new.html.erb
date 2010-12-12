@@ -1,9 +1,18 @@
-<% content_for :thread_posts do %>
+<style type="text/css">
+  #thread_posts {
+      display: none;
+  }
+
+  #thread_entry {
+      display: none;
+  }
+</style>
+
 <% title "Sign up" %>
-
-<p>Already have an account? <%= link_to "Log in", login_path %>.</p>
-
-<%= render 'form' %>
+<% content_for :thread_view do %>
+<div id="signup_form">
+    <%= render 'form' %>
+</div>
 <% end %>
 
 <%= render 'forum_threads/list_threads' %>

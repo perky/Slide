@@ -4,37 +4,28 @@
     <title><%= content_for?(:title) ? yield(:title) : "Slide" %></title>
     <%= stylesheet_link_tag "application" %>
 		<%= stylesheet_link_tag "slide.css" %>
-		
+
     <%= javascript_include_tag :defaults %>
 		<%= javascript_include_tag "http://js.pusherapp.com/1.6/pusher.min.js" %>
-		
+		<%= javascript_include_tag "pusher.js" %>
     <%= csrf_meta_tag %>
     <%= yield(:head) %>
   </head>
   <body>
-	
-		<div id="top_bar">
-			<div id="title">
-				<h1 id="logo"> Slide </h1>
-				<h2 id="tagline"> An elegant forum on rails </h2>
-			</div>
-			<div id="nav">
-				<a href="#">New thread</a>
-				<a href="#">Search all threads</a>
-				<a href="#">Search current thread</a>
-			</div>
-		</div>
-		
+
+        <%= render :partial => 'layouts/flash', :locals => { :flash => flash } %>
+		<%= render :partial => 'layouts/topbar' %>
+
 		<div id="main">
 			<div id="thread_list"> <%= yield(:thread_list) %> </div>
 			<div id="thread_view">
+                <%= yield(:thread_view) %>
 				<div id="thread_posts"> <%= yield(:thread_posts) %> </div>
 				<div id="thread_entry"> <%= yield(:thread_entry) %> </div>
 			</div>
 		</div>
-		
-		<%= yield(:flash) %>
+
 		<%= yield %>
-		
+		(forum)
   </body>
 </html>

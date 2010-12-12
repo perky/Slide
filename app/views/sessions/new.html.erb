@@ -1,17 +1,31 @@
-<% content_for :thread_posts do %>
+<style type="text/css">
+  #thread_posts {
+      display: none;
+  }
+
+  #thread_entry {
+      display: none;
+  }
+</style>
+
+<% content_for :thread_view do %>
 <% title "Log in" %>
+<div id="login_form">
+    <p class="signup">Don't have an account? <%= link_to "Sign up!", signup_path %></p>
 
-<p>Don't have an account? <%= link_to "Sign up!", signup_path %></p>
+    <%= form_tag sessions_path do %>
+      <p>
+        <%= label_tag :login, "Username" %><br />
+        <%= text_field_tag :login, params[:login] %>
+      </p>
+      <p>
+        <%= label_tag :password %><br />
+        <%= password_field_tag :password %>
+      </p>
+      <p><%= submit_tag "Log in" %></p>
+    <% end %>
+</div>
+<% end %>
 
-<%= form_tag sessions_path do %>
-  <p>
-    <%= label_tag :login, "Username or Email Address" %><br />
-    <%= text_field_tag :login, params[:login] %>
-  </p>
-  <p>
-    <%= label_tag :password %><br />
-    <%= password_field_tag :password %>
-  </p>
-  <p><%= submit_tag "Log in" %></p>
-<% end %>
-<% end %>
+
+<%= render 'forum_threads/list_threads' %>

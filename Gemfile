@@ -8,14 +8,26 @@ gem 'rails', '3.0.3'
 gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'pusher'
 gem 'bb-ruby'
+gem 'haml'
+gem "bcrypt-ruby", :require => "bcrypt"
 
-group :development, :test, :cucumber do
+group :development do
+  gem 'faker'
   gem 'nifty-generators'
-  gem 'cucumber'
-  gem 'cucumber-rails'
-  gem 'webrat'
-  gem 'rspec-rails'
   gem "mocha"
+end
+
+group :test, :cucumber do
+  gem 'rspec', '2.0.1'
+  gem 'rspec-rails', '2.0.1'
+  gem 'webrat', '0.7.1'
+  gem 'factory_girl_rails', '1.0'
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'cucumber-rails'
+  gem 'cucumber'
+  gem 'spork'
+  gem 'launchy'
 end
 
 # Use unicorn as the web server
@@ -40,4 +52,4 @@ end
 # group :development, :test do
 #   gem 'webrat'
 # end
-gem "bcrypt-ruby"
+

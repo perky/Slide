@@ -16,6 +16,6 @@
 <% end %>
 <% else %>
 	<% content_for :thread_entry do %>
-	 You need to sign in.
+	 <p id="no_entry_signin">You need to <%= link_to "log in", login_path %> to post.</p>
 	<% end %>
 <% end %>

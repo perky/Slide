@@ -104,6 +104,7 @@ body {
 #thread_posts {
 	width: 100%;
 	height: 500px;
+	max-height: 100%;
 	overflow: scroll;
 	overflow-x: hidden;
 	border-left-style: solid;
@@ -246,6 +247,13 @@ body {
 	padding: 37px 30px 30px 38px;
 }
 
+#no_entry_signin {
+	text-align: center;
+	font-weight: bold;
+	font-family: "Lucida Grande", Lucida, Verdana, sans-serif;
+	margin-top: 37px;
+}
+
 
 
 /* @end */
@@ -265,4 +273,30 @@ h1.home {
 
 
 /* @end */
+
+/* @group Login */
+
+#login_form, #signup_form {
+	margin: 130px 25px 25px;
+	text-align: center;
+}
+
+#login_form, #signup_form label {
+	color: #2e2e2e;
+	font: bold 0.8em "Lucida Grande", Lucida, Verdana, sans-serif;
+}
+
+#login_form .signup {
+	font: 1.3em Georgia, "Times New Roman", Times, serif;
+}
+
+/* @end */
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	color: #3a3a3a;
+}
 

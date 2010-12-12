@@ -5,10 +5,11 @@
 	</div>
 	<div id="nav">
 		<% if logged_in? then %>
-			<a href="#">New thread</a>
-			<%= link_to 'Logout', logout_path %>
+            <%= link_to "New thread", new_forum_thread_path %>
+			<%= link_to 'Logout', logout_path, :id => "Logout" %>
 		<% else %>
 			<%= link_to "Login", login_path %>
+            <%= link_to "Signup", signup_path %>
 		<% end %>
 		<a href="#">Search all threads</a>
 		<a href="#">Search current thread</a>

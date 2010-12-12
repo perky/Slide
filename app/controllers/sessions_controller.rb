@@ -1,22 +1,23 @@
 class SessionsController < ApplicationController
   def new
+    render :layout => "forum"
   end
 
   def create
     user = User.authenticate(params[:login], params[:password])
     if user
       session[:user_id] = user.id
-      flash[:notice] = "Logged in successfully."
+      flash[:notice] = "Welcome #{user.username}."
       redirect_to_target_or_default("/")
     else
-      flash.now[:error] = "Invalid login or password."
-      render :action => 'new'
+      flash[:error] = "Incorrect username and/or password."
+      redirect_to login_path
     end
   end
 
   def destroy
     session[:user_id] = nil
-    flash[:notice] = "You have been logged out."
+    flash[:notice] = "You have logged out."
     redirect_to "/"
   end
 end

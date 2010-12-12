@@ -1,20 +1,18 @@
-<%= form_for @forum_thread do |f| %>
-  <%= f.error_messages %>
+<%= form_for @forum_thread do |thread_form| %>
+  <%= thread_form.error_messages %>
   <p>
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
+    <%= thread_form.label :title %><br />
+    <%= thread_form.text_field :title %>
   </p>
   <p>
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
+    <%= thread_form.label :description %><br />
+    <%= thread_form.text_field :description %>
   </p>
-  <p>
-    <%= f.label :user_id %><br />
-    <%= f.text_field :user_id %>
-  </p>
-  <p>
-    <%= f.label :catagory_id %><br />
-    <%= f.text_field :catagory_id %>
-  </p>
-  <p><%= f.submit %></p>
+    <%= thread_form.fields_for :forum_posts do |post_form| %>
+        <p>
+        <%= post_form.label :content %>
+        <%= post_form.text_area :content %>
+        </p>
+    <% end %>
+  <p><%= thread_form.submit "Create Thread" %></p>
 <% end %>

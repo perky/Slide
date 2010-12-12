@@ -11,6 +11,18 @@ module NavigationHelpers
     when /the home\s?page/
       '/'
 
+    when /the list of threads/
+      forum_threads_path
+
+    when /^the "(.+)" thread page$/
+      forum_thread_path( ForumThread.find_by_title($1) )
+
+    when /the sign up page/
+      signup_path
+
+    when /the login page/
+      login_path
+
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

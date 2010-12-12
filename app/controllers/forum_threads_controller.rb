@@ -19,14 +19,18 @@ class ForumThreadsController < ApplicationController
   
   def new
     @forum_thread = ForumThread.new
+    @forum_thread.forum_posts.build
   end
   
   def create
     @forum_thread = ForumThread.new(params[:forum_thread])
+    @forum_thread.user = current_user
+    @forum_thread.forum_posts.last.user = current_user
     if @forum_thread.save
-      flash[:notice] = "Successfully created forum thread."
+      flash[:notice] = "Created new thread."
       redirect_to @forum_thread
     else
+      flash[:error] = "Could not create thread."
       render :action => 'new'
     end
   end
